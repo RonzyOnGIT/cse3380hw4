@@ -1,15 +1,15 @@
 import numpy as np
 import scipy.linalg as linalg
 
-
-
-# go to office hours for this maybe cause id 
 # @param a change of basis matrix
 # @param is input column vector
-# multiplies change of basis matrix and column vector to produce vector in new basis
-def newBasisVector(a, b):
-    vectorNewBasis = a @ b
-    return vectorNewBasis
+# @param is whether the input vector is in the same basis as change of basis matrix
+# following formula of x = B[x]B to calculate new coordinates
+def newBasisVector(a, b, sameBasis: bool):
+    if sameBasis:
+        return a @ b
+    else:
+        return np.linalg.solve(a, b)
 
 
 # x
@@ -20,12 +20,12 @@ xB = np.array([[-2], [6], [1]])
 
 changeMatrix = [[0, -4, 6], [-1, 0, 6], [-1, 0, 3]]
 
-newVector = newBasisVector(changeMatrix, xB)
-
-# convert 
-# newVectorB = 
-
-print("[x]B -> x: ")
+# this should output (-2, 6, 1)
+newVector = newBasisVector(changeMatrix, x, False)
 print(newVector)
 
-print("\n[x] -> [x]b: ")
+print("\n")
+
+# this should print (-18, 8, 5)
+newVector = newBasisVector(changeMatrix, xB, True)
+print(newVector)
