@@ -1,6 +1,10 @@
 import numpy as np
 import scipy.linalg as linalg
 
+def getDimensionality(a):
+    rank = np.linalg.matrix_rank(a)
+    return rank
+
 # @param a change of basis matrix
 # @param is input column vector
 # @param is whether the input vector is in the same basis as change of basis matrix
@@ -29,3 +33,6 @@ print("\n")
 # this should print (-18, 8, 5)
 newVector = newBasisVector(changeMatrix, xB, True)
 print(newVector)
+
+print(getDimensionality(changeMatrix))
+
