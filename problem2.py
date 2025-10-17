@@ -1,6 +1,8 @@
 import numpy as np
 import scipy.linalg as linalg
 
+# run the container: source venv/bin/active
+
 def getDimensionality(a):
     rank = np.linalg.matrix_rank(a)
     return rank
